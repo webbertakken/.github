@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["schedule:weekly", ":rebaseStalePrs", ":disableMajorUpdates", ":dependencyDashboard"],
+  "labels": ["dependencies"],
+  "prHourlyLimit": 5,
+  "packageRules": [
+    {
+      "description": "Update dev dependencies in a grouped PR",
+      "groupName": "devDependencies",
+      "matchDepTypes": ["devDependencies", "optionalDependencies", "peerDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "commitMessagePrefix": "chore: ",
+      "automerge": true
+    },
+    {
+      "description": "Packages locked as per https://gist.github.com/webbertakken/c2b457d39224baf701c8de1589b61555",
+      "matchPackageNames": ["lint-staged", "husky"],
+      "enabled": false
+    }
+  ]
+}
