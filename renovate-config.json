@@ -3,14 +3,19 @@
   "extends": ["schedule:weekly", ":rebaseStalePrs", ":disableMajorUpdates", ":disableDependencyDashboard"],
   "labels": ["dependencies"],
   "prHourlyLimit": 5,
+  "minimumReleaseAge": "3 days",
   "packageRules": [
+    {
+      "description": "Automerge minor and patch updates once checks pass",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
     {
       "description": "Update dev dependencies in a grouped PR",
       "groupName": "devDependencies",
       "matchDepTypes": ["devDependencies", "optionalDependencies", "peerDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
-      "commitMessagePrefix": "chore: ",
-      "automerge": true
+      "commitMessagePrefix": "chore: "
     },
     {
       "description": "Packages locked as per https://gist.github.com/webbertakken/c2b457d39224baf701c8de1589b61555",
