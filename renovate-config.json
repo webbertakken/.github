@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [":rebaseStalePrs", ":disableDependencyDashboard"],
   "labels": ["dependencies"],
-  "prHourlyLimit": 5,
+  "prHourlyLimit": 20,
+  "prConcurrentLimit": 10,
   "minimumReleaseAge": "20 hours",
   "packageRules": [
     {
@@ -22,6 +23,11 @@
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major"],
       "groupName": "GitHub Actions"
+    },
+    {
+      "description": "At most 3 majors open at once: Renovate opens a major only while fewer than 3 of its PRs are open, so minor and patch updates go first",
+      "matchUpdateTypes": ["major"],
+      "prConcurrentLimit": 3
     }
   ]
 }
