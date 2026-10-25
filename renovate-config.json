@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [":rebaseStalePrs", ":disableDependencyDashboard"],
+  "extends": [":rebaseStalePrs", ":disableDependencyDashboard", ":semanticCommits"],
   "labels": ["dependencies"],
   "prHourlyLimit": 20,
   "prConcurrentLimit": 10,
