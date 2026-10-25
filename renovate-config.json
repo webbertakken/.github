@@ -1,9 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["schedule:weekly", ":rebaseStalePrs", ":disableMajorUpdates", ":disableDependencyDashboard"],
+  "extends": [":rebaseStalePrs", ":disableMajorUpdates", ":disableDependencyDashboard"],
   "labels": ["dependencies"],
   "prHourlyLimit": 5,
-  "minimumReleaseAge": "3 days",
+  "minimumReleaseAge": "36 hours",
   "packageRules": [
     {
       "description": "Automerge minor and patch updates once checks pass",
