@@ -18,6 +18,13 @@
       "commitMessagePrefix": "chore: "
     },
     {
+      "description": "GitHub Actions majors track the runner's Node runtime, so freezing them breaks CI eventually",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "enabled": true,
+      "groupName": "GitHub Actions"
+    },
+    {
       "description": "Keep git hook tooling on its latest major; majors are reviewed, never automerged",
       "matchPackageNames": ["husky", "lint-staged"],
       "matchUpdateTypes": ["major"],
