@@ -1,21 +1,33 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["schedule:weekly", ":rebaseStalePrs", ":disableMajorUpdates", ":disableDependencyDashboard"],
+  "extends": [":rebaseStalePrs", ":disableDependencyDashboard"],
   "labels": ["dependencies"],
-  "prHourlyLimit": 5,
+  "prHourlyLimit": 20,
+  "prConcurrentLimit": 10,
+  "minimumReleaseAge": "20 hours",
   "packageRules": [
+    {
+      "description": "Automerge minor and patch updates once checks pass; majors always wait for review",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
     {
       "description": "Update dev dependencies in a grouped PR",
       "groupName": "devDependencies",
       "matchDepTypes": ["devDependencies", "optionalDependencies", "peerDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
-      "commitMessagePrefix": "chore: ",
-      "automerge": true
+      "commitMessagePrefix": "chore: "
     },
     {
-      "description": "Packages locked as per https://gist.github.com/webbertakken/c2b457d39224baf701c8de1589b61555",
-      "matchPackageNames": ["lint-staged", "husky"],
-      "enabled": false
+      "description": "Bump GitHub Actions majors together; they track the runner's Node runtime",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "description": "At most 3 majors open at once: Renovate opens a major only while fewer than 3 of its PRs are open, so minor and patch updates go first",
+      "matchUpdateTypes": ["major"],
+      "prConcurrentLimit": 3
     }
   ]
 }
