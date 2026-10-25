@@ -1,12 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [":rebaseStalePrs", ":disableMajorUpdates", ":disableDependencyDashboard"],
+  "extends": [":rebaseStalePrs", ":disableDependencyDashboard"],
   "labels": ["dependencies"],
   "prHourlyLimit": 5,
   "minimumReleaseAge": "20 hours",
   "packageRules": [
     {
-      "description": "Automerge minor and patch updates once checks pass",
+      "description": "Automerge minor and patch updates once checks pass; majors always wait for review",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     },
@@ -18,17 +18,10 @@
       "commitMessagePrefix": "chore: "
     },
     {
-      "description": "GitHub Actions majors track the runner's Node runtime, so freezing them breaks CI eventually",
+      "description": "Bump GitHub Actions majors together; they track the runner's Node runtime",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major"],
-      "enabled": true,
       "groupName": "GitHub Actions"
-    },
-    {
-      "description": "Keep git hook tooling on its latest major; majors are reviewed, never automerged",
-      "matchPackageNames": ["husky", "lint-staged"],
-      "matchUpdateTypes": ["major"],
-      "enabled": true
     }
   ]
 }
