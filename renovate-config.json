@@ -18,9 +18,10 @@
       "commitMessagePrefix": "chore: "
     },
     {
-      "description": "Packages locked as per https://gist.github.com/webbertakken/c2b457d39224baf701c8de1589b61555",
-      "matchPackageNames": ["lint-staged", "husky"],
-      "enabled": false
+      "description": "Keep git hook tooling on its latest major; majors are reviewed, never automerged",
+      "matchPackageNames": ["husky", "lint-staged"],
+      "matchUpdateTypes": ["major"],
+      "enabled": true
     }
   ]
 }
