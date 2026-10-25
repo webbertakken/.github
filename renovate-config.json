@@ -3,7 +3,7 @@
   "extends": [":rebaseStalePrs", ":disableMajorUpdates", ":disableDependencyDashboard"],
   "labels": ["dependencies"],
   "prHourlyLimit": 5,
-  "minimumReleaseAge": "36 hours",
+  "minimumReleaseAge": "20 hours",
   "packageRules": [
     {
       "description": "Automerge minor and patch updates once checks pass",
