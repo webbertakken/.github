@@ -18,6 +18,7 @@
   "prHourlyLimit": 20,
   "prConcurrentLimit": 10,
   "minimumReleaseAge": "20 hours",
+  "timezone": "Europe/Amsterdam",
   "packageRules": [
     {
       "description": "Automerge minor and patch updates once checks pass; majors always wait for review",
@@ -30,6 +31,13 @@
       "matchDepTypes": ["devDependencies", "optionalDependencies", "peerDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "commitMessagePrefix": "chore: "
+    },
+    {
+      "description": "Every minor, patch, pin and digest update in one PR a week: one PR's checks instead of one per dependency (each PR's macOS jobs queue for hours on free runners). Security updates keep their own PRs, at once",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-non-major",
+      "schedule": ["* 0-5 * * 1"]
     },
     {
       "description": "Bump GitHub Actions majors together; they track the runner's Node runtime",
