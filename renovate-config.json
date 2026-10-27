@@ -53,9 +53,9 @@
       "groupName": "GitHub Actions"
     },
     {
-      "description": "At most 3 majors open at once: Renovate opens a major only while fewer than 3 of its PRs are open, so minor and patch updates go first",
+      "description": "At most 7 majors open at once: Renovate opens a major only while fewer than 7 of its PRs are open",
       "matchUpdateTypes": ["major"],
-      "prConcurrentLimit": 3
+      "prConcurrentLimit": 7
     }
   ]
 }
