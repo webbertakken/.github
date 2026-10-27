@@ -18,6 +18,13 @@
   "prHourlyLimit": 20,
   "prConcurrentLimit": 10,
   "minimumReleaseAge": "20 hours",
+  "osvVulnerabilityAlerts": true,
+  "lockFileMaintenance": {
+    "description": "Weekly, beside the non-major group: refresh every lockfile within its ranges, so transitive dependencies (where most security alerts sit) move too",
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["* 0-5 * * 1"]
+  },
   "timezone": "Europe/Amsterdam",
   "packageRules": [
     {
