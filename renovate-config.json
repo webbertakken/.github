@@ -56,6 +56,11 @@
       "description": "At most 7 majors open at once: Renovate opens a major only while fewer than 7 of its PRs are open",
       "matchUpdateTypes": ["major"],
       "prConcurrentLimit": 7
+    },
+    {
+      "description": "Lockfile maintenance and digest pins have no release timestamp, so a minimum release age keeps their stability check pending forever; they wait on checks alone",
+      "matchUpdateTypes": ["lockFileMaintenance", "pin", "pinDigest", "digest"],
+      "minimumReleaseAge": null
     }
   ]
 }
